@@ -1,0 +1,12 @@
+*.o
+*.iso
+*.bin
+*.swp
+binutils-2.25
+binutils-2.25.tar.gz
+binutils-2.25.tar.gz.sig
+build-binutils
+build-gcc
+gcc-4.9.2
+gcc-4.9.2.tar.bz2
+gcc-4.9.2.tar.bz2.sig
