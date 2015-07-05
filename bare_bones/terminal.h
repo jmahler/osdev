@@ -3,7 +3,6 @@
  
 #include <stdint.h>
 #include <stddef.h>
-#include <stdbool.h>
 
 #include "string.h"
 
@@ -30,7 +29,7 @@ enum vga_color {
 static const size_t VGA_WIDTH = 80;
 static const size_t VGA_HEIGHT = 25;
 
-uint16_t make_vgaentry(char c, enum vga_color fg, enum vga_color bg, bool blink);
+uint16_t make_vgaentry(char c, enum vga_color fg, enum vga_color bg);
 
 void terminal_putentryat(char c, enum vga_color fg, enum vga_color bg, size_t row, size_t col);
 

@@ -1,14 +1,13 @@
 
 #include "terminal.h"
 
-uint16_t make_vgaentry(char c, enum vga_color fg, enum vga_color bg, bool blink)
+uint16_t make_vgaentry(char c, enum vga_color fg, enum vga_color bg)
 {
 	uint16_t entry = 0;
 
 	entry |= 0x00ff & c;
 	entry |= 0x0f00 & fg << 8;
-	entry |= 0x7000 & bg << 12;
-	entry |= 0x8000 & blink << 15;
+	entry |= 0xf000 & bg << 12;
 
 	return entry;
 }
@@ -17,7 +16,7 @@ volatile uint16_t* terminal_buffer = (uint16_t*) 0xB8000;
 
 void terminal_putentryat(char c, enum vga_color fg, enum vga_color bg, size_t row, size_t col) {
 	size_t index = row * VGA_WIDTH + col;
-	terminal_buffer[index] = make_vgaentry(c, fg, bg, 0);
+	terminal_buffer[index] = make_vgaentry(c, fg, bg);
 }
 
 enum vga_color terminal_bg;
