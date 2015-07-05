@@ -55,6 +55,10 @@ static void terminal_scroll()
 }
 
 void terminal_putchar(char c) {
+	terminal_putcharc(c, terminal_fg, terminal_bg);
+}
+
+void terminal_putcharc(char c, enum vga_color fg, enum vga_color bg) {
 
 	static size_t terminal_row = 0;
 	static size_t terminal_col = 0;
@@ -62,11 +66,10 @@ void terminal_putchar(char c) {
 	if (c == '\n') {
 		/* blank the rest of the line */
 		for (; terminal_col < VGA_WIDTH; terminal_col++)
-			terminal_putentryat(' ', terminal_fg, terminal_bg,
-						terminal_row, terminal_col);
-	} else {
-		terminal_putentryat(c, terminal_fg, terminal_bg,
+			terminal_putentryat(' ', fg, bg,
 					terminal_row, terminal_col);
+	} else {
+		terminal_putentryat(c, fg, bg, terminal_row, terminal_col);
 		terminal_col++;
 	}
 
