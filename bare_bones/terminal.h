@@ -28,18 +28,14 @@ enum vga_color {
 	COLOR_WHITE = 15,
 };
 
-uint16_t make_vgaentry(char c, enum vga_color fg, enum vga_color bg, bool blink);
-
 static const size_t VGA_WIDTH = 80;
 static const size_t VGA_HEIGHT = 25;
 
+uint16_t make_vgaentry(char c, enum vga_color fg, enum vga_color bg, bool blink);
+
+void terminal_putentryat(char c, enum vga_color fg, enum vga_color bg, size_t row, size_t col);
+
 void terminal_initialize();
-
-void terminal_putentryat(char c, enum vga_color fg, enum vga_color bg, size_t x, size_t y);
-
-void terminal_blank_line();
-
-void terminal_scroll();
 
 void terminal_putchar(char c);
 
