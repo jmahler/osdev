@@ -20,4 +20,9 @@ void kernel_main() {
 	terminal_initialize();
  
 	terminal_writestring("Hello, kernel World!\n");
+
+	for (char c = 0; c <= 15; c++) {
+		terminal_putcharc('X', c, c);
+	}
+	terminal_putchar('\n');
 }
