@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include <stddef.h>
 
+#include <stdbool.h>
+
 #include "string.h"
 
 /* Hardware text mode color constants. */
@@ -26,18 +28,14 @@ enum vga_color {
 	COLOR_WHITE = 15,
 };
 
-uint8_t make_color(enum vga_color fg, enum vga_color bg);
-
-uint16_t make_vgaentry(char c, uint8_t color);
+uint16_t make_vgaentry(char c, enum vga_color fg, enum vga_color bg, bool blink);
 
 static const size_t VGA_WIDTH = 80;
 static const size_t VGA_HEIGHT = 25;
 
 void terminal_initialize();
 
-void terminal_setcolor(uint8_t color);
-
-void terminal_putentryat(char c, uint8_t color, size_t x, size_t y);
+void terminal_putentryat(char c, enum vga_color fg, enum vga_color bg, size_t x, size_t y);
 
 void terminal_blank_line();
 
